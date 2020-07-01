@@ -1,10 +1,13 @@
+#Imported data manipulation library
 import pandas as pd
 
+#Create dataframe
 nba = pd.read_csv("Duke.csv")
-nba['Rebounds/Fouls'] = nba.apply(lambda row: row['TRB']/row['PF'] if row['PF'] != 0 else 0, axis=1)
-players = [nba['Player']]
-rebs_fouls = [nba['Rebounds/Fouls']]
 
+#Created ratio column
+nba['Rebounds/Fouls'] = nba.apply(lambda row: row['TRB']/row['PF'] if row['PF'] != 0 else 0, axis=1)
+
+#Created new df with only relevent data
 df = pd.DataFrame() 
 df['Player_Name'] = nba['Player'] 
 df['Rebounds/Fouls'] = nba['Rebounds/Fouls']
